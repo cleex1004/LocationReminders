@@ -33,18 +33,29 @@
 }
 
 - (IBAction)location1Pressed:(id)sender {
-    CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(47.6566674, -122.351096);
+    CLLocationCoordinate2D coordinate1 = CLLocationCoordinate2DMake(47.616990, -122.343656);
     
-    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(coordinate, 500.0, 500.0);
+    MKCoordinateRegion region1 = MKCoordinateRegionMakeWithDistance(coordinate1, 500.0, 500.0);
     
-    [self.mapView setRegion:region animated:YES];
+    [self.mapView setRegion:region1 animated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)location2Pressed:(id)sender {
+    CLLocationCoordinate2D coordinate2 = CLLocationCoordinate2DMake(38.906858, -77.045420);
+    
+    MKCoordinateRegion region2 = MKCoordinateRegionMakeWithDistance(coordinate2, 500.0, 500.0);
+    
+    [self.mapView setRegion:region2 animated:YES];
 }
 
+- (IBAction)location3Pressed:(id)sender {
+    CLLocationCoordinate2D coordinate3 = CLLocationCoordinate2DMake(47.193756, -122.539191);
+    
+    MKCoordinateRegion region3 = MKCoordinateRegionMakeWithDistance(coordinate3, 500.0, 500.0);
+    
+    [self.mapView setRegion:region3 animated:YES];
+    
+}
 
 @end
 //TEST CODE
