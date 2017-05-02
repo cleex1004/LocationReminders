@@ -8,12 +8,13 @@
 
 #import "ViewController.h"
 #import "AddReminderViewController.h"
+#import "LocationControllerDelegate.h"
 
 @import Parse;
 @import MapKit;
 @import CoreLocation;
 
-@interface ViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
+@interface ViewController () <CLLocationManagerDelegate, MKMapViewDelegate, LocationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -121,6 +122,10 @@
 -(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     NSLog(@"Acessory Tapped!");
     [self performSegueWithIdentifier:@"AddReminderViewController" sender:view];
+}
+
+- (void)locationControllerUpdatedLocation:(CLLocation *)location{
+    
 }
 
 @end

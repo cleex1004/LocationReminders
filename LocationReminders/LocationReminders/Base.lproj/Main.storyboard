@@ -91,8 +91,36 @@
                     <view key="view" contentMode="scaleToFill" id="REE-Lc-oKZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="NAME" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cDg-Ot-qEq">
+                                <rect key="frame" x="0.0" y="74" width="375" height="133.5"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="RADIUS" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FJo-Cm-nLm">
+                                <rect key="frame" x="0.0" y="217.5" width="375" height="133.5"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cDg-Ot-qEq" firstAttribute="centerX" secondItem="REE-Lc-oKZ" secondAttribute="centerX" id="1Wj-Q0-zF9"/>
+                            <constraint firstItem="cDg-Ot-qEq" firstAttribute="width" secondItem="REE-Lc-oKZ" secondAttribute="width" id="1vm-br-VJX"/>
+                            <constraint firstItem="FJo-Cm-nLm" firstAttribute="height" secondItem="REE-Lc-oKZ" secondAttribute="height" multiplier="0.2" id="D4E-S8-w6B"/>
+                            <constraint firstItem="FJo-Cm-nLm" firstAttribute="top" secondItem="cDg-Ot-qEq" secondAttribute="bottom" constant="10" id="Mer-fi-gdG"/>
+                            <constraint firstItem="FJo-Cm-nLm" firstAttribute="centerX" secondItem="REE-Lc-oKZ" secondAttribute="centerX" id="OKM-B2-zqC"/>
+                            <constraint firstItem="cDg-Ot-qEq" firstAttribute="height" secondItem="REE-Lc-oKZ" secondAttribute="height" multiplier="0.2" id="Ye0-7L-ypR"/>
+                            <constraint firstItem="cDg-Ot-qEq" firstAttribute="top" secondItem="QEA-aI-rZW" secondAttribute="bottom" constant="10" id="erQ-dL-psf"/>
+                            <constraint firstItem="FJo-Cm-nLm" firstAttribute="width" secondItem="REE-Lc-oKZ" secondAttribute="width" id="z5P-9T-KKH"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="nameField" destination="cDg-Ot-qEq" id="wYI-E1-CtS"/>
+                        <outlet property="radiusField" destination="FJo-Cm-nLm" id="RLD-Mb-1fD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hhZ-Hc-rEx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
