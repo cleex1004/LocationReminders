@@ -42,7 +42,13 @@
     [super prepareForSegue:segue sender:sender];
     
     if ([segue.identifier isEqualToString:@"AddReminderViewController"] && [sender isKindOfClass:[MKAnnotationView class]]) {
-        <#statements#>
+        MKAnnotationView *annotationView = (MKAnnotationView *)sender;
+        
+        AddReminderViewController *newReminderViewController = (AddReminderViewController *)segue.destinationViewController;
+        
+        newReminderViewController.coordinate = annotationView.annotation.coordinate;
+        newReminderViewController.annotationTitle = annotationView.annotation.title;
+        newReminderViewController.title = annotationView.annotation.title;
     }
 }
 
