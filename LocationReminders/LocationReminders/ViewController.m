@@ -38,6 +38,14 @@
     [self.locationManager startUpdatingLocation];
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    [super prepareForSegue:segue sender:sender];
+    
+    if ([segue.identifier isEqualToString:@"AddReminderViewController"] && [sender isKindOfClass:[MKAnnotationView class]]) {
+        <#statements#>
+    }
+}
+
 - (IBAction)location1Pressed:(id)sender {
     CLLocationCoordinate2D coordinate1 = CLLocationCoordinate2DMake(47.616990, -122.343656);
     
@@ -102,6 +110,11 @@
     annotationView.rightCalloutAccessoryView = rightCalloutAccessory;
     
     return annotationView;
+}
+
+-(void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    NSLog(@"Acessory Tapped!");
+    [self performSegueWithIdentifier:@"AddReminderViewController" sender:view];
 }
 
 @end
