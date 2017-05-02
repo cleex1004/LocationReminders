@@ -10,8 +10,9 @@
 
 @import Parse;
 @import MapKit;
+@import CoreLocation;
 
-@interface ViewController ()
+@interface ViewController () <CLLocationManagerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) CLLocationManager *locationManager;
@@ -29,7 +30,10 @@
 -(void)requestPermissions{
     self.locationManager = [[CLLocationManager alloc]init];
     [self.locationManager requestAlwaysAuthorization];
-    
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    self.locationManager.distanceFilter = 100;
+    self.locationManager.delegate = self;
+    [self.locationManager startUpdatingLocation];
 }
 
 - (IBAction)location1Pressed:(id)sender {
@@ -55,6 +59,15 @@
     
     [self.mapView setRegion:region3 animated:YES];
     
+}
+
+-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(nonnull NSArray<CLLocation *> *)locations{
+    CLLocation *location = locations.lastObject;
+    
+    NSLog(@"Coordinate: %f, %f - Altitude: %f", location.coordinate.latitude, location.coordinate.longitude, location.altitude);
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500.0, 500.0);
+    
+    [self.mapView setRegion:region animated:YES];
 }
 
 @end
