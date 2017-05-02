@@ -17,6 +17,8 @@
 		BCAA5E851EB7B5AF00EC5D39 /* Bolts.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BCAA5E811EB7B5A700EC5D39 /* Bolts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BCAA5E871EB7C0C900EC5D39 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAA5E861EB7C0C900EC5D39 /* MapKit.framework */; };
 		BCE3AA2C1EB8FEF600E5A16D /* AddReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE3AA2B1EB8FEF600E5A16D /* AddReminderViewController.m */; };
+		BCE3AA2D1EB910FE00E5A16D /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAA5E801EB7B5A700EC5D39 /* Parse.framework */; };
+		BCE3AA2E1EB910FE00E5A16D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCAA5E811EB7B5A700EC5D39 /* Bolts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,8 +46,6 @@
 		BCAA5E6D1EB7AD0E00EC5D39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCAA5E701EB7AD0E00EC5D39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCAA5E721EB7AD0E00EC5D39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BCAA5E791EB7B2D400EC5D39 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
-		BCAA5E7A1EB7B2D400EC5D39 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
 		BCAA5E801EB7B5A700EC5D39 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = Carthage/Build/iOS/Parse.framework; sourceTree = "<group>"; };
 		BCAA5E811EB7B5A700EC5D39 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = Carthage/Build/iOS/Bolts.framework; sourceTree = "<group>"; };
 		BCAA5E861EB7C0C900EC5D39 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -58,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCE3AA2D1EB910FE00E5A16D /* Parse.framework in Frameworks */,
+				BCE3AA2E1EB910FE00E5A16D /* Bolts.framework in Frameworks */,
 				BCAA5E871EB7C0C900EC5D39 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -108,8 +110,6 @@
 				BCAA5E861EB7C0C900EC5D39 /* MapKit.framework */,
 				BCAA5E801EB7B5A700EC5D39 /* Parse.framework */,
 				BCAA5E811EB7B5A700EC5D39 /* Bolts.framework */,
-				BCAA5E791EB7B2D400EC5D39 /* Parse.framework */,
-				BCAA5E7A1EB7B2D400EC5D39 /* Bolts.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
