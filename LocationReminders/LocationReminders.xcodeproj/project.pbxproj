@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BCA609E41EBA465500F0CEFA /* Reminder.m in Sources */ = {isa = PBXBuildFile; fileRef = BCA609E31EBA465500F0CEFA /* Reminder.m */; };
 		BCAA5E631EB7AD0E00EC5D39 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA5E621EB7AD0E00EC5D39 /* main.m */; };
 		BCAA5E661EB7AD0E00EC5D39 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA5E651EB7AD0E00EC5D39 /* AppDelegate.m */; };
 		BCAA5E691EB7AD0E00EC5D39 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCAA5E681EB7AD0E00EC5D39 /* ViewController.m */; };
@@ -37,6 +38,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BCA609E21EBA465500F0CEFA /* Reminder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reminder.h; sourceTree = "<group>"; };
+		BCA609E31EBA465500F0CEFA /* Reminder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reminder.m; sourceTree = "<group>"; };
 		BCAA5E5E1EB7AD0E00EC5D39 /* LocationReminders.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationReminders.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCAA5E621EB7AD0E00EC5D39 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BCAA5E641EB7AD0E00EC5D39 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 			children = (
 				BCE8D0C51EB91ABC00FB23BE /* LocationController.h */,
 				BCE8D0C61EB91ABC00FB23BE /* LocationController.m */,
+				BCA609E21EBA465500F0CEFA /* Reminder.h */,
+				BCA609E31EBA465500F0CEFA /* Reminder.m */,
 				BCE8D0C81EB91E2600FB23BE /* LocationControllerDelegate.h */,
 			);
 			name = model;
@@ -239,6 +244,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCE8D0C71EB91ABC00FB23BE /* LocationController.m in Sources */,
+				BCA609E41EBA465500F0CEFA /* Reminder.m in Sources */,
 				BCE3AA2C1EB8FEF600E5A16D /* AddReminderViewController.m in Sources */,
 				BCAA5E691EB7AD0E00EC5D39 /* ViewController.m in Sources */,
 				BCAA5E661EB7AD0E00EC5D39 /* AppDelegate.m in Sources */,
