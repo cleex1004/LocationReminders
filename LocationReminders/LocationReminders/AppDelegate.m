@@ -6,7 +6,9 @@
 //  Copyright © 2017 Christina Lee. All rights reserved.
 //
 
+
 #import "AppDelegate.h"
+@import Parse;
 
 @interface AppDelegate ()
 
@@ -16,7 +18,13 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    ParseClientConfiguration *parseConfig = [ParseClientConfiguration configurationWithBlock:^(id<ParseMutableClientConfiguration>  _Nonnull configuration) {
+        configuration.applicationId = @"this-needs-a-random-app-id";
+        configuration.clientKey = @"this-needs-a-random-master-key";
+        configuration.server = @"https://location-reminder-server-ios.herokuapp.com/parse";
+    }];
+    
+    [Parse initializeWithConfiguration:parseConfig];
     return YES;
 }
 
