@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gYL-6n-1EP">
+
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -24,10 +26,12 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="lrt-Nq-hu2">
                                 <rect key="frame" x="56.5" y="100" width="262.5" height="467"/>
+
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="SyM-Cf-5YY" appends="YES" id="ZvR-1O-XK2"/>
                                 </connections>
+
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S7t-nC-rlt">
                                 <rect key="frame" x="10" y="577" width="70" height="30"/>
@@ -65,10 +69,12 @@
                             <constraint firstItem="UY2-gC-POx" firstAttribute="top" secondItem="lrt-Nq-hu2" secondAttribute="bottom" constant="10" id="m5m-89-qUK"/>
                         </constraints>
                     </view>
+
                     <navigationItem key="navigationItem" id="7mE-Pd-HV5"/>
                     <connections>
                         <outlet property="mapView" destination="lrt-Nq-hu2" id="QYo-5j-3ra"/>
                         <segue destination="j1i-2P-kPN" kind="show" identifier="AddReminderViewController" id="Uwp-Wg-w4n"/>
+
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
