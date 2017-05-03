@@ -41,10 +41,15 @@
         loginViewController.delegate = self;
         loginViewController.signUpController.delegate = self;
         
-        loginViewController.fields = PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword;
+        loginViewController.fields = PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword | PFLogInFieldsFacebook | PFLogInFieldsPasswordForgotten;
         
         [self presentViewController:loginViewController animated:YES completion:nil];
     }
+//    [self fetchQuery];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [self fetchQuery];
 }
 
 -(void)reminderSavedToParse:(id)sender {
@@ -151,8 +156,8 @@
 
 -(MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay{
     MKCircleRenderer *renderer = [[MKCircleRenderer alloc]initWithCircle:overlay];
-    renderer.strokeColor = [UIColor blueColor];
-    renderer.fillColor = [UIColor redColor];
+    renderer.strokeColor = [UIColor cyanColor];
+    renderer.fillColor = [UIColor magentaColor];
     renderer.alpha = 0.25;
     
     return renderer;
@@ -164,6 +169,17 @@
 
 -(void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user{
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)fetchQuery{
+    PFQuery *query = [PFQuery queryWithClassName:@"Reminder"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"%@", error.localizedDescription);
+        } else {
+            NSLog(@"Query Results %@", objects);
+        }
+    }];
 }
 
 @end

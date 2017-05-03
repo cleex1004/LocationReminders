@@ -20,9 +20,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+}
+
+- (IBAction)savePressed:(id)sender {
     Reminder *newReminder = [Reminder object];
-    newReminder.name = self.annotationTitle;
+    newReminder.name = self.nameField.text;
     newReminder.location = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
     
     [newReminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
@@ -33,16 +35,18 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:@"ReminderSavedToParse" object:nil];
         
         if (self.completion) {
-            CGFloat radius = 100; //for lab coming from uislider/ textfield from the user
+            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+            f.numberStyle = NSNumberFormatterDecimalStyle;
+            CGFloat radius = [[f numberFromString:self.radiusField.text] floatValue]; //for lab coming from uislider/ textfield from the user
             MKCircle *circle = [MKCircle circleWithCenterCoordinate:self.coordinate radius:radius];
             self.completion(circle);
             
             [self.navigationController popViewControllerAnimated:YES];
         }
-
+        
     }];
-    
-    }
+
+}
 
 
 
