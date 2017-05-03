@@ -41,7 +41,7 @@
         loginViewController.delegate = self;
         loginViewController.signUpController.delegate = self;
         
-        loginViewController.fields = PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword | PFLogInFieldsFacebook | PFLogInFieldsPasswordForgotten;
+        loginViewController.fields = PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword | PFLogInFieldsPasswordForgotten;
         
         [self presentViewController:loginViewController animated:YES completion:nil];
     }
