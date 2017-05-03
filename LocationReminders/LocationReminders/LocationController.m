@@ -10,7 +10,7 @@
 @import MapKit;
 @import CoreLocation;
 
-@interface LocationController() <CLLocationManagerDelegate, LocationControllerDelegate>
+@interface LocationController() <CLLocationManagerDelegate>
 
 @end
 
@@ -30,15 +30,13 @@
     self = [super init];
     
     if (self) {
-        _locationManager = [[CLLocationManager alloc]init];
-        _location = [[CLLocation alloc]init];
-        _delegate = self;
+        [self requestPermissions];
     }
     return self;
 }
 
 -(void)requestPermissions {
-//    self.locationManager = [[CLLocationManager alloc]init];
+    self.locationManager = [[CLLocationManager alloc]init];
     [self.locationManager requestAlwaysAuthorization];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     self.locationManager.distanceFilter = 100;
