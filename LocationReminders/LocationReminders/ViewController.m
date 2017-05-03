@@ -14,8 +14,9 @@
 @import Parse;
 @import MapKit;
 @import CoreLocation;
+@import ParseUI;
 
-@interface ViewController () <MKMapViewDelegate, LocationControllerDelegate>
+@interface ViewController () <MKMapViewDelegate, LocationControllerDelegate, PFLogInViewControllerDelegate, PFSignUpViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 //@property (strong, nonatomic) CLLocationManager *locationManager;
@@ -30,6 +31,24 @@
     self.mapView.showsUserLocation = YES;
     self.mapView.delegate = self;
     [LocationController shared].delegate = self;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reminderSavedToParse:) name:@"ReminderSavedToParse" object:nil];
+    
+    [PFUser logOut];
+    
+    if (![PFUser currentUser]) {
+        PFLogInViewController *loginViewController = [[PFLogInViewController alloc]init];
+        loginViewController.delegate = self;
+        loginViewController.signUpController.delegate = self;
+        
+        loginViewController.fields = PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsUsernameAndPassword;
+        
+        [self presentViewController:loginViewController animated:YES completion:nil];
+    }
+}
+
+-(void)reminderSavedToParse:(id)sender {
+    NSLog(@"Do some stuff since our new Reminder was saved!");
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -54,6 +73,11 @@
             
         };
     }
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self name:@"ReminderSavedToParse" object:nil];
+    
 }
 
 - (IBAction)location1Pressed:(id)sender {
@@ -134,6 +158,14 @@
     return renderer;
 }
 
+-(void)logInViewController:(PFLogInViewController *)logInController didLogInUser:(PFUser *)user{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)signUpViewController:(PFSignUpViewController *)signUpController didSignUpUser:(PFUser *)user{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
 
 //TEST CODE
@@ -157,21 +189,4 @@
 //        }
 //    }];
 
-//-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(nonnull NSArray<CLLocation *> *)locations {
-//    CLLocation *location = locations.lastObject;
-//
-//    NSLog(@"Coordinate: %f, %f - Altitude: %f", location.coordinate.latitude, location.coordinate.longitude, location.altitude);
-//    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(location.coordinate, 500.0, 500.0);
-//
-//    [self.mapView setRegion:region animated:YES];
-//}
 
-
-//-(void)requestPermissions {
-//    self.locationManager = [[CLLocationManager alloc]init];
-//    [self.locationManager requestAlwaysAuthorization];
-//    self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-//    self.locationManager.distanceFilter = 100;
-//    self.locationManager.delegate = self;
-//    [self.locationManager startUpdatingLocation];
-//}
