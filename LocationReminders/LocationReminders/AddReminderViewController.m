@@ -8,6 +8,7 @@
 
 #import "AddReminderViewController.h"
 #import "Reminder.h"
+#import "LocationController.h"
 
 @interface AddReminderViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -39,6 +40,12 @@
             f.numberStyle = NSNumberFormatterDecimalStyle;
             CGFloat radius = [[f numberFromString:self.radiusField.text] floatValue]; //for lab coming from uislider/ textfield from the user
             MKCircle *circle = [MKCircle circleWithCenterCoordinate:self.coordinate radius:radius];
+            
+            if ([CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion class]]) {
+                CLCircularRegion *region = [[CLCircularRegion alloc]initWithCenter:self.coordinate radius:radius identifier:newReminder.name];
+                [LocationController.shared startMonitoringForRegion:region];
+            }
+            
             self.completion(circle);
             
             [self.navigationController popViewControllerAnimated:YES];

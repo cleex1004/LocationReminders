@@ -51,6 +51,29 @@
     [self.delegate locationControllerUpdatedLocation:self.location];
 }
 
+-(void)startMonitoringForRegion:(CLRegion *)region {
+    [self.locationManager startMonitoringForRegion:region];
+}
+
+-(void)locationManager:(CLLocationManager *)manager didStartMonitoringForRegion:(CLRegion *)region {
+    NSLog(@"We have successfully started monitoring changed for region: %@", region.identifier);
+}
+
+-(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLRegion *)region {
+    NSLog(@"User DID ENTER Region: %@", region.identifier);
+}
+
+-(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLRegion *)region {
+    NSLog(@"User DID EXIT Region: %@", region.identifier);
+}
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    NSLog(@"There was an error: %@", error.localizedDescription); //ignore if in simulator
+}
+
+-(void)locationManager:(CLLocationManager *)manager didVisit:(CLVisit *)visit {
+    NSLog(@"This is here for no reason... But heres a visit: %@", visit);
+}
 
 @end
 
