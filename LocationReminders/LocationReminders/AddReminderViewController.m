@@ -24,9 +24,12 @@
 }
 
 - (IBAction)savePressed:(id)sender {
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    f.numberStyle = NSNumberFormatterDecimalStyle;
     Reminder *newReminder = [Reminder object];
     newReminder.name = self.nameField.text;
     newReminder.location = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
+    newReminder.radius = [f numberFromString:self.radiusField.text];
     
     [newReminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         NSLog(@"Annotation Title: %@", self.annotationTitle);

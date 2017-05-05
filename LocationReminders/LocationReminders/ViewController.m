@@ -10,6 +10,7 @@
 #import "AddReminderViewController.h"
 #import "LocationControllerDelegate.h"
 #import "LocationController.h"
+#import "Reminder.h"
 
 @import Parse;
 @import MapKit;
@@ -45,11 +46,10 @@
         
         [self presentViewController:loginViewController animated:YES completion:nil];
     }
-//    [self fetchQuery];
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    [self fetchQuery];
+    [self allOverlays];
 }
 
 -(void)reminderSavedToParse:(id)sender {
@@ -171,15 +171,22 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)fetchQuery{
+-(void)allOverlays {
     PFQuery *query = [PFQuery queryWithClassName:@"Reminder"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
         if (error) {
             NSLog(@"%@", error.localizedDescription);
         } else {
             NSLog(@"Query Results %@", objects);
+            for (Reminder *reminder in objects) {
+                CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(reminder.location.latitude, reminder.location.longitude);
+                CGFloat radius = [reminder.radius floatValue];
+                MKCircle *circleOverlay = [MKCircle circleWithCenterCoordinate:coordinate radius:radius];
+                [self.mapView addOverlay:circleOverlay];
+            }
         }
     }];
+
 }
 
 @end
@@ -204,5 +211,16 @@
 //            NSLog(@"Query Results %@", objects);
 //        }
 //    }];
+
+//-(void)fetchQuery {
+//    PFQuery *query = [PFQuery queryWithClassName:@"Reminder"];
+//    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+//        if (error) {
+//            NSLog(@"%@", error.localizedDescription);
+//        } else {
+//            NSLog(@"Query Results %@", objects);
+//        }
+//    }];
+//}
 
 
