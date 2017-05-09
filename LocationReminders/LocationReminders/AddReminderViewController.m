@@ -7,6 +7,7 @@
 //
 
 #import "AddReminderViewController.h"
+#import "Reminder.h"
 
 @interface AddReminderViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *nameField;
@@ -19,8 +20,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"Annotation Title: %@", self.annotationTitle);
-    NSLog(@"Coordinates: %f, %f", self.coordinate.latitude, self.coordinate.longitude);
+}
+
+- (IBAction)savePressed:(id)sender {
+    Reminder *newReminder = [Reminder object];
+    newReminder.name = self.nameField.text;
+    newReminder.location = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
+    
+    [newReminder saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        NSLog(@"Annotation Title: %@", self.annotationTitle);
+        NSLog(@"Coordinates: %f, %f", self.coordinate.latitude, self.coordinate.longitude);
+        NSLog(@"Save Reminder Successful: %i - Error %@", succeeded, error.localizedDescription);
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"ReminderSavedToParse" object:nil];
+        
+        if (self.completion) {
+            NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+            f.numberStyle = NSNumberFormatterDecimalStyle;
+            CGFloat radius = [[f numberFromString:self.radiusField.text] floatValue]; //for lab coming from uislider/ textfield from the user
+            MKCircle *circle = [MKCircle circleWithCenterCoordinate:self.coordinate radius:radius];
+            self.completion(circle);
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        
+    }];
+
 }
 
 

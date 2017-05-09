@@ -7,7 +7,7 @@
 //
 
 #import "LocationController.h"
-@import MapKit;
+//@import MapKit;
 @import CoreLocation;
 
 @interface LocationController() <CLLocationManagerDelegate>
@@ -39,7 +39,7 @@
     self.locationManager = [[CLLocationManager alloc]init];
     [self.locationManager requestAlwaysAuthorization];
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    self.locationManager.distanceFilter = 100;
+    self.locationManager.distanceFilter = 100; //meters
     self.locationManager.delegate = self;
     [self.locationManager startUpdatingLocation];
 }
